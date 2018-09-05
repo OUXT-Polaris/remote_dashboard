@@ -4,7 +4,7 @@
 
 QT+=widgets svg xml
 TEMPLATE = app
-TARGET = src
+TARGET = exec
 INCLUDEPATH += .
 
 # Input
