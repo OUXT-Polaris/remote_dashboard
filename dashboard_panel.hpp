@@ -2,12 +2,12 @@
 /*Application: Dashboard for WAM-V                                             */
 /*File Description: This class show dashboard panel                            */
 /*                                                                             */
-/*Author     : Wada Suisei (Github: @JadeEtoile)                               */
+/*Author     : Github: @JadeEtoile                                             */
 /*Date       : 2018-09-01                                                      */
 /*                                                                             */
 /*****Version*****                                                             */
 /*Version:     Date:         Author:          Description:                     */
-/*0.1          2018-09-01    Wada Suisei      New                              */
+/*0.1          2018-09-01    JadeEtoile       New                              */
 /*******************************************************************************/
 #ifndef DASHBOARD_PANEL_HPP
 #define DASHBOARD_PANEL_HPP

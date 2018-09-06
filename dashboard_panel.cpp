@@ -1,3 +1,16 @@
+/*******************************************************************************/
+/*Application: Dashboard for WAM-V                                             */
+/*File Description: This class show dashboard panel                            */
+/*                                                                             */
+/*Author     : Github: @JadeEtoile                                             */
+/*Date       : 2018-09-01                                                      */
+/*                                                                             */
+/*****Version*****                                                             */
+/*Version:     Date:         Author:          Description:                     */
+/*0.1          2018-09-01    JadeEtoile       New                              */
+/*******************************************************************************/
+
+
 /*Include header*/
 #include "dashboard_panel.hpp"
 
