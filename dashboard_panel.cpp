@@ -60,6 +60,14 @@ void clsDashboardPanel::setValueImu(float roll, float pitch, float yaw)
 
 
 /*Define Method*/
+void clsDashboardPanel::keyPressEvent(QKeyEvent *event)
+{
+	if( event->key() == (Qt::Key_Q | QApplication::keyboardModifiers() | Qt::ControlModifier) )
+		{
+			this->close();
+		}
+}
+	
 void clsDashboardPanel::paintEvent(QPaintEvent *)
 {
 	/*Initialize Variables*/

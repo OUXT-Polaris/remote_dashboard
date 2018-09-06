@@ -105,6 +105,14 @@ public:
 		
 		/*Initialize SVG Engine*/
 		front_panel_handler = new QSvgRenderer(svgpath);
+
+		/*Initialize Window*/
+		QMainWindow::resize( QSize(1920,1080) );
+		QMainWindow::setAutoFillBackground(true);
+		QMainWindow::setPalette(widget_palette);
+
+		/*Set Click Event*/
+		
 	}
 
 	
@@ -192,6 +200,7 @@ public:
 	
 /***Override Method***/
 protected:
+	void keyPressEvent(QKeyEvent *event);
 	void paintEvent(QPaintEvent *);
 
 
