@@ -75,10 +75,25 @@ void clsDashboardPanel::setValueImu(float roll, float pitch, float yaw)
 /*Define Method*/
 void clsDashboardPanel::keyPressEvent(QKeyEvent *event)
 {
-	if( event->key() == (Qt::Key_Q | QApplication::keyboardModifiers() | Qt::ControlModifier) )
+	if( event->key() == (Qt::Key_Q) )
 		{
-			this->close();
+			if(event->modifiers() & Qt::ControlModifier)
+				{
+					qApp->quit();
+				}
 		}
+	else if( event->key() == (Qt::Key_F) )
+		{
+			if(this->windowState() != Qt::WindowFullScreen)
+				{
+					this->showFullScreen();
+				}
+			else
+				{
+					this->showNormal();
+				}
+		}
+					
 }
 	
 void clsDashboardPanel::paintEvent(QPaintEvent *)

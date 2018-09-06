@@ -75,10 +75,10 @@ public:
 		/*Initalize Variables*/
 		panelvalue =
 			{
-				-19.0,
+				49.0,
 				18.0,
-				-240.0,
-				248.0,
+				-14.0,
+				43.9,
 				DASHBOARD_PANEL_WAMV_CONTROL_MODE_AUTO,
 				4.5,
 				
