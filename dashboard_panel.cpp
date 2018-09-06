@@ -329,7 +329,8 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 
 
 	/*Throttle*/
-	panel_painter.setFont( QFont("Zekton", 60, 0, false) );
+	drawfont.setPointSize(64);
+	panel_painter.setFont( drawfont );
 	
 	if(temp.thruster_port < 0)
 		{
@@ -340,7 +341,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.setPen(colorNormal);
 		}
 	valueText.setNum(temp.thruster_port, 'f', 0);
-	panel_painter.drawText( QRectF(311 - 248/2, 970 - 83/2, 248, 83), Qt::AlignRight|Qt::AlignBottom,  valueText+"%");
+	panel_painter.drawText( QRectF(311 - 248/2, 990 - 83/2, 248, 103), Qt::AlignRight|Qt::AlignBottom,  valueText+"%");
 
 	if(temp.thruster_stbd < 0)
 		{
@@ -351,11 +352,12 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.setPen(colorNormal);
 		}
 	valueText.setNum(temp.thruster_stbd, 'f', 0);
-	panel_painter.drawText( QRectF(1749 - 248/2, 970 - 83/2, 248, 83), Qt::AlignRight|Qt::AlignBottom,  valueText+"%");
+	panel_painter.drawText( QRectF(1749 - 248/2, 990 - 83/2, 248, 103), Qt::AlignRight|Qt::AlignBottom,  valueText+"%");
 
 
 	/*Azimuth*/
-	panel_painter.setFont( QFont("Zekton", 36, 0, false) );
+	drawfont.setPointSize(32);
+	panel_painter.setFont( drawfont );
 	
 	if(temp.azimuth_port >= 0)
 		{
@@ -367,10 +369,12 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 		}
 	valueText.setNum(temp.azimuth_port, 'f', 1);
 	panel_painter.drawText( QRectF(634 - 180/2, 1028 - 60/2, 180, 60), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
-	panel_painter.setFont( QFont("Zekton", 20, 0, false) );
+	drawfont.setPointSize(20);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(634 - 180/2, 1028 - 60/2, 180, 60), Qt::AlignRight|Qt::AlignTop,  "o ");
 
-	panel_painter.setFont( QFont("Zekton", 36, 0, false) );
+	drawfont.setPointSize(32);
+	panel_painter.setFont( drawfont );
 	
 	if(temp.azimuth_stbd >= 0)
 		{
@@ -382,20 +386,24 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 		}
 	valueText.setNum(temp.azimuth_stbd, 'f', 1);
 	panel_painter.drawText( QRectF(1286 - 180/2, 1028 - 60/2, 180, 60), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
-	panel_painter.setFont( QFont("Zekton", 20, 0, false) );
+	drawfont.setPointSize(20);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(1286 - 180/2, 1028 - 60/2, 180, 60), Qt::AlignRight|Qt::AlignTop,  "o ");
 
 	/*Ground Speed*/
-	panel_painter.setFont( QFont("Zekton", 36, 0, false) );
+	drawfont.setPointSize(36);
+	panel_painter.setFont( drawfont );
 	panel_painter.setPen(colorNormal);
 
 	valueText.setNum(temp.ground_speed, 'f', 1);
 	panel_painter.drawText( QRectF(960 - 100/2, 740 - 78/2, 100, 78), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
-	panel_painter.setFont( QFont("Zekton", 20, 0, false) );
+	drawfont.setPointSize(20);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(960 - 100/2, 700 - 78/2, 100, 78), Qt::AlignCenter|Qt::AlignVCenter,  "kt");
 
 	/*Voltage*/
-	panel_painter.setFont( QFont("Zekton", 38, 0, false) );
+	drawfont.setPointSize(38);
+	panel_painter.setFont( drawfont );
 	
 	if(temp.control_battery_voltage > meter24v_low)
 		{
@@ -406,7 +414,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.setPen(colorError);
 		}
 	valueText.setNum(temp.control_battery_voltage, 'f', 1);
-	panel_painter.drawText( QRectF(1472 - 135/2, 345 - 52/2, 135, 52), Qt::AlignLeft|Qt::AlignBottom,  valueText+"V");
+	panel_painter.drawText( QRectF(1472 - 135/2, 345 - 52/2, 155, 72), Qt::AlignLeft|Qt::AlignBottom,  valueText+"V");
 
 	
 	if(temp.motor_battery_voltage > meter24v_low)
@@ -418,7 +426,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.setPen(colorError);
 		}
 	valueText.setNum(temp.motor_battery_voltage, 'f', 1);
-	panel_painter.drawText( QRectF(1772 - 135/2, 345 - 52/2, 135, 52), Qt::AlignLeft|Qt::AlignBottom,  valueText+"V");
+	panel_painter.drawText( QRectF(1772 - 135/2, 345 - 52/2, 155, 72), Qt::AlignLeft|Qt::AlignBottom,  valueText+"V");
 
 	
 	if(temp.control_input_voltage > meter12v_low)
@@ -430,35 +438,42 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.setPen(colorError);
 		}
 	valueText.setNum(temp.control_input_voltage, 'f', 1);
-	panel_painter.drawText( QRectF(1472 - 135/2, 598 - 52/2, 135, 52), Qt::AlignLeft|Qt::AlignBottom,  valueText+"V");
+	panel_painter.drawText( QRectF(1472 - 135/2, 598 - 52/2, 155, 72), Qt::AlignLeft|Qt::AlignBottom,  valueText+"V");
 
 
 	/*IMU*/
 	panel_painter.setPen(colorNormal);
 
-	panel_painter.setFont( QFont("Zekton", 32, 0, false) );
+	drawfont.setPointSize(32);
+	panel_painter.setFont( drawfont );
 	valueText.setNum(temp.imu_roll, 'f', 1);
 	panel_painter.drawText( QRectF(115 - 180/2, 580 - 58/2,180, 58), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
-	panel_painter.setFont( QFont("Zekton", 16, 0, false) );
+	drawfont.setPointSize(16);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(115 - 180/2, 580 - 58/2, 180, 58), Qt::AlignRight|Qt::AlignTop,  "o ");
 
-	panel_painter.setFont( QFont("Zekton", 32, 0, false) );
+	drawfont.setPointSize(32);
+	panel_painter.setFont( drawfont );
 	valueText.setNum(temp.imu_pitch, 'f', 1);
 	panel_painter.drawText( QRectF(330 - 180/2, 580 - 58/2,180, 58), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
-	panel_painter.setFont( QFont("Zekton", 16, 0, false) );
+	drawfont.setPointSize(16);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(330 - 180/2, 580 - 58/2, 180, 58), Qt::AlignRight|Qt::AlignTop,  "o ");
 
-	panel_painter.setFont( QFont("Zekton", 32, 0, false) );
+	drawfont.setPointSize(32);
+	panel_painter.setFont( drawfont );
 	valueText.setNum(temp.imu_yaw, 'f', 1);
 	panel_painter.drawText( QRectF(545 - 180/2, 580 - 58/2,180, 58), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
-	panel_painter.setFont( QFont("Zekton", 16, 0, false) );
+	drawfont.setPointSize(16);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(545 - 180/2, 580 - 58/2, 180, 58), Qt::AlignRight|Qt::AlignTop,  "o ");
 
 	/*GPS*/
 	panel_painter.setPen(colorNormal);
 	
 	/*Altitude*/
-	panel_painter.setFont( QFont("Zekton", 26, 0, false) );
+	drawfont.setPointSize(26);
+	panel_painter.setFont( drawfont );
 	if(temp.gps_altitude_n_s == DASHBOARD_PANEL_GPS_S)
 		{
 			panel_painter.drawText( QRectF(75 - 38/2, 198 - 38/2, 38, 38), Qt::AlignCenter|Qt::AlignVCenter, "S");
@@ -469,14 +484,17 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 		}
 	valueText.setNum(temp.gps_altitude_deg);
 	panel_painter.drawText( QRectF(158 - 113/2, 198 - 38/2,113, 38), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
-	panel_painter.setFont( QFont("Zekton", 16, 0, false) );
+	drawfont.setPointSize(16);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(158 - 113/2, 198 - 38/2,113, 38), Qt::AlignRight|Qt::AlignTop,  "o ");
-	panel_painter.setFont( QFont("Zekton", 26, 0, false) );
+	drawfont.setPointSize(26);
+	panel_painter.setFont(drawfont );
 	valueText.setNum(temp.gps_altitude_min);
 	panel_painter.drawText( QRectF(410 - 360/2, 198 - 38/2, 410, 38), Qt::AlignLeft|Qt::AlignVCenter,  valueText+"\'");
 
 	/*Longitude*/
-	panel_painter.setFont( QFont("Zekton", 26, 0, false) );
+	drawfont.setPointSize(26);
+	panel_painter.setFont( drawfont );
 	if(temp.gps_altitude_n_s == DASHBOARD_PANEL_GPS_E)
 		{
 			panel_painter.drawText( QRectF(75 - 38/2, 251 - 38/2, 38, 38), Qt::AlignCenter|Qt::AlignVCenter, "E");
@@ -487,18 +505,22 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 		}
 	valueText.setNum(temp.gps_longitude_deg);
 	panel_painter.drawText( QRectF(158 - 113/2, 251 - 38/2,113, 38), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
-	panel_painter.setFont( QFont("Zekton", 16, 0, false) );
+	drawfont.setPointSize(16);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(158 - 113/2, 251 - 38/2,113, 38), Qt::AlignRight|Qt::AlignTop,  "o ");
-	panel_painter.setFont( QFont("Zekton", 26, 0, false) );
+	drawfont.setPointSize(26);
+	panel_painter.setFont( drawfont );
 	valueText.setNum(temp.gps_longitude_min);
 	panel_painter.drawText( QRectF(410 - 360/2, 251 - 38/2, 410, 38), Qt::AlignLeft|Qt::AlignVCenter,  valueText+"\'");
 
 
 	/*Time*/
 	panel_painter.setPen(colorNormal);
-	panel_painter.setFont( QFont("Zekton", 40, 0, false) );	
-	panel_painter.drawText( QRectF(206 - 360/2, 70 - 82/2, 360, 82), Qt::AlignLeft|Qt::AlignBottom,  timestr);
-	panel_painter.setFont( QFont("Zekton", 20, 0, false) );
+	drawfont.setPointSize(44);
+	panel_painter.setFont( drawfont );
+	panel_painter.drawText( QRectF(206 - 360/2, 85 - 82/2, 360, 82), Qt::AlignLeft|Qt::AlignBottom,  timestr);
+	drawfont.setPointSize(20);
+	panel_painter.setFont( drawfont );
 	panel_painter.drawText( QRectF(156 - 260/2, 36 - 25/2, 260, 25), Qt::AlignLeft|Qt::AlignVCenter,  datestr);	
 }
 

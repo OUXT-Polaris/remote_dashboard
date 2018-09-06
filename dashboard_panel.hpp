@@ -68,16 +68,17 @@ public:
 
 		update_time(100),/*ms*/
 
-		widget_palette( QPalette( QColor(90, 90, 90, 255), QColor(60, 60, 60, 255) ) )
+		widget_palette( QPalette( QColor(90, 90, 90, 255), QColor(60, 60, 60, 255) ) ),
+		drawfont( QFont("Saira", 26, 0, false) )
 		
 	{
 		/*Initalize Variables*/
 		panelvalue =
 			{
-				-18.0,
+				-19.0,
 				18.0,
-				-0.0,
-				0.0,
+				-240.0,
+				248.0,
 				DASHBOARD_PANEL_WAMV_CONTROL_MODE_AUTO,
 				4.5,
 				
@@ -181,6 +182,7 @@ private:
 	QDateTime current_time;
 	QString datestr;
 	QString timestr;
+	QFont drawfont;
 
 
 /***Method***/
