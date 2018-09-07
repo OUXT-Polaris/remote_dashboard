@@ -129,7 +129,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 	panel_painter.drawRect( QRect(0, 0, 1920, 1080) );
 	
 	/*Draw Port Thruster*/
-	if(temp.thruster_port >=0)
+	if(temp.thruster_port >0)
 		{
 			panel_painter.setBrush( QBrush( colorNormal, Qt::SolidPattern ) );
 			panel_painter.drawPie( QRect(241-400/2, 840-400/2, 400, 400), 16*(240-240*temp.thruster_port/100), 16*240*temp.thruster_port/100 );
@@ -137,7 +137,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.setBrush( QBrush( colorBg, Qt::SolidPattern ) );
 			panel_painter.drawRect( QRect(363-154/2, 891-40/2, 154, 40) );
 		}
-	else
+	else if(temp.thruster_port < 0)
 		{
 			panel_painter.setBrush( QBrush( colorError, Qt::SolidPattern ) );
 			panel_painter.drawPie( QRect(241-400/2, 840-400/2, 400, 400), 16*(240-240*abs(temp.thruster_port)/100), 16*240*abs(temp.thruster_port)/100 );
@@ -146,9 +146,13 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.drawRect( QRect(198-154/2, 891-40/2, 154, 40) );
 
 		}
+	else
+		{
+			;
+		}
 
 	/*Draw STBD Thruster*/
-	if(temp.thruster_stbd >=0)
+	if(temp.thruster_stbd >0)
 		{
 			panel_painter.setBrush( QBrush( colorNormal, Qt::SolidPattern ) );
 			panel_painter.drawPie( QRect(1679-400/2, 840-400/2, 400, 400), 16*(240-240*temp.thruster_stbd/100), 16*240*temp.thruster_stbd/100 );
@@ -156,7 +160,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.setBrush( QBrush( colorBg, Qt::SolidPattern ) );
 			panel_painter.drawRect( QRect(1801-154/2, 891-40/2, 154, 40) );
 		}
-	else
+	else if(temp.thruster_stbd < 0)
 		{
 			panel_painter.setBrush( QBrush( colorError, Qt::SolidPattern ) );
 			panel_painter.drawPie( QRect(1679-400/2, 840-400/2, 400, 400), 16*(240-240*abs(temp.thruster_stbd)/100), 16*240*abs(temp.thruster_stbd)/100 );
@@ -164,6 +168,10 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.setBrush( QBrush( colorBg, Qt::SolidPattern ) );
 			panel_painter.drawRect( QRect(1801-154/2, 891-40/2, 154, 40) );
 
+		}
+	else
+		{
+			;
 		}
 
 	/*Draw Speed*/
