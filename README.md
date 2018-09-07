@@ -7,12 +7,16 @@ This package is Remote Dashboard Application programmed by C++ and Qt5.5.1.
 
 ## How to build
 1.Install font(Case of Ubuntu16.04)  
-`sudo mkdir /usr/share/fonts/truetype/saira`
-`sudo cp ./font/Saira-Regular.ttf /usr/share/fonts/truetype/saira/`
+```
+sudo mkdir /usr/share/fonts/truetype/saira
+sudo cp ./font/Saira-Regular.ttf /usr/share/fonts/truetype/saira/
+```
 
 2.Build Source  
-`qmake`
-`make`
+```
+qmake
+make
+```
 
 ## Execute
 `./exec`
