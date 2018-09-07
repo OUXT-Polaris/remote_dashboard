@@ -43,6 +43,7 @@ public:
 	clsDashboardPanel():
 		/*Constants*/
 		colorBg( QColor(60,60,60,255) ), /*R,G,B,A*/
+		colorPanel( QColor(0, 4, 37, 255) ),
 		colorNormal( QColor(43, 255, 201, 255) ),
 		colorWarn( QColor(255, 128, 0, 255) ),
 		colorError( QColor(255, 36, 0, 255) ),
@@ -68,34 +69,34 @@ public:
 
 		update_time(100),/*ms*/
 
-		widget_palette( QPalette( QColor(90, 90, 90, 255), QColor(60, 60, 60, 255) ) ),
+		widget_palette( QPalette( QColor(90, 90, 90, 255), QColor(0, 4, 37, 255) ) ),
 		drawfont( QFont("Saira", 26, 0, false) )
 		
 	{
 		/*Initalize Variables*/
 		panelvalue =
 			{
-				49.0,
-				18.0,
-				-14.0,
-				43.9,
-				DASHBOARD_PANEL_WAMV_CONTROL_MODE_AUTO,
-				4.5,
+				0.0,
+				0.0,
+				0.0,
+				0.0,
+				DASHBOARD_PANEL_WAMV_CONTROL_MODE_ESTOP,
+				0.0,
 				
-				10.2,
-				-4.5,
-				240,
+				0.0,
+				0.0,
+				0.0,
 				
-				24.8,
-				24.4,
-				12.1,
+				25.5,
+				25.5,
+				12.0,
 				
 				DASHBOARD_PANEL_GPS_N,
-				34,
-				25.8976,
+				35,
+				25.0000,
 				DASHBOARD_PANEL_GPS_E,
 				135,
-				48.2343,
+				48.0000,
 				0
 			};
 		
@@ -132,6 +133,7 @@ public:
 private:
 	/**Color**/
 	const QColor colorBg;
+	const QColor colorPanel;
 	const QColor colorNormal;
 	const QColor colorWarn;
 	const QColor colorError;

@@ -75,15 +75,18 @@ void clsDashboardPanel::setValueImu(float roll, float pitch, float yaw)
 /*Define Method*/
 void clsDashboardPanel::keyPressEvent(QKeyEvent *event)
 {
-	if( event->key() == (Qt::Key_Q) )
+	switch(event->key())
 		{
-			if(event->modifiers() & Qt::ControlModifier)
+			
+		case Qt::Key_Q:
+			if( event->modifiers() & Qt::ControlModifier )
 				{
 					qApp->quit();
 				}
-		}
-	else if( event->key() == (Qt::Key_F) )
-		{
+			break;
+
+			
+		case Qt::Key_F:
 			if(this->windowState() != Qt::WindowFullScreen)
 				{
 					this->showFullScreen();
@@ -92,6 +95,8 @@ void clsDashboardPanel::keyPressEvent(QKeyEvent *event)
 				{
 					this->showNormal();
 				}
+			break;
+
 		}
 					
 }
@@ -118,6 +123,10 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 	QPainter panel_painter(this);
 	panel_painter.setRenderHint(QPainter::Antialiasing, true);
 	panel_painter.setPen( QPen(Qt::NoPen) );
+
+	/*Draw Bacground*/
+	panel_painter.setBrush( QBrush(colorBg, Qt::SolidPattern) );
+	panel_painter.drawRect( QRect(0, 0, 1920, 1080) );
 	
 	/*Draw Port Thruster*/
 	if(temp.thruster_port >=0)
@@ -169,6 +178,8 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.drawPie( QRect(960-670/2, 1205-670/2, 670, 670), 16*75, 16*30 );			
 			panel_painter.setBrush( QBrush( colorBg, Qt::SolidPattern ) );
 			panel_painter.drawEllipse( QRect(960-580/2, 1205-580/2, 580, 580) );
+			panel_painter.setBrush( QBrush( colorPanel, Qt::SolidPattern) );
+			panel_painter.drawRect( QRect(960-580/2, 1080, 580, 580-(1205-1080)) );
 			break;
 
 		case DASHBOARD_PANEL_WAMV_CONTROL_MODE_AUTO:
@@ -176,6 +187,8 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.drawPie( QRect(960-670/2, 1205-670/2, 670, 670), 16*45, 16*30 );			
 			panel_painter.setBrush( QBrush( colorBg, Qt::SolidPattern ) );
 			panel_painter.drawEllipse( QRect(960-580/2, 1205-580/2, 580, 580) );
+			panel_painter.setBrush( QBrush( colorPanel, Qt::SolidPattern) );
+			panel_painter.drawRect( QRect(960-580/2, 1080, 580, 580-(1205-1080)) );
 			break;
 
 		case DASHBOARD_PANEL_WAMV_CONTROL_MODE_ESTOP:
@@ -183,6 +196,8 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.drawPie( QRect(960-670/2, 1205-670/2, 670, 670), 16*105, 16*30 );			
 			panel_painter.setBrush( QBrush( colorBg, Qt::SolidPattern ) );
 			panel_painter.drawEllipse( QRect(960-580/2, 1205-580/2, 580, 580) );
+			panel_painter.setBrush( QBrush( colorPanel, Qt::SolidPattern) );
+			panel_painter.drawRect( QRect(960-580/2, 1080, 580, 580-(1205-1080)) );
 			break;
 
 		case DASHBOARD_PANEL_WAMV_CONTROL_MODE_EMERGENCY:
@@ -192,6 +207,8 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 			panel_painter.drawEllipse( QRect(960-580/2, 1205-580/2, 580, 580) );
 			panel_painter.setBrush( QBrush( colorWarn, Qt::SolidPattern ) );
 			panel_painter.drawRect( QRect(960-200/2, 1002-70/2, 200, 70) );
+			panel_painter.setBrush( QBrush( colorPanel, Qt::SolidPattern) );
+			panel_painter.drawRect( QRect(960-580/2, 1080, 580, 580-(1205-1080)) );
 			break;
 		}
 
@@ -347,7 +364,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 	panel_painter.translate( QPoint(545, 450) );
 	panel_painter.rotate(-temp.imu_yaw);
 	panel_painter.translate( -QPoint(545, 450) );
-	panel_painter.drawImage( QRectF(545-150/2, 450-48/2, 150, 48), fig_hdg );
+	panel_painter.drawImage( QRectF(545-48/2, 450-150/2, 48, 150), fig_hdg );
 	panel_painter.translate( QPoint(545, 450) );
 	panel_painter.rotate(temp.imu_yaw);
 	panel_painter.translate( -QPoint(545, 450) );
@@ -514,7 +531,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 	panel_painter.drawText( QRectF(158 - 113/2, 198 - 38/2,113, 38), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
 	drawfont.setPointSize(16);
 	panel_painter.setFont( drawfont );
-	panel_painter.drawText( QRectF(158 - 113/2, 198 - 38/2,113, 38), Qt::AlignRight|Qt::AlignTop,  "o ");
+	panel_painter.drawText( QRectF(154 - 113/2, 192 - 38/2,113, 38), Qt::AlignRight|Qt::AlignTop,  "o ");
 	drawfont.setPointSize(26);
 	panel_painter.setFont(drawfont );
 	valueText.setNum(temp.gps_altitude_min);
@@ -535,7 +552,7 @@ void clsDashboardPanel::paintEvent(QPaintEvent *)
 	panel_painter.drawText( QRectF(158 - 113/2, 251 - 38/2,113, 38), Qt::AlignCenter|Qt::AlignVCenter,  valueText);
 	drawfont.setPointSize(16);
 	panel_painter.setFont( drawfont );
-	panel_painter.drawText( QRectF(158 - 113/2, 251 - 38/2,113, 38), Qt::AlignRight|Qt::AlignTop,  "o ");
+	panel_painter.drawText( QRectF(154 - 113/2, 245 - 38/2,113, 38), Qt::AlignRight|Qt::AlignTop,  "o ");
 	drawfont.setPointSize(26);
 	panel_painter.setFont( drawfont );
 	valueText.setNum(temp.gps_longitude_min);
