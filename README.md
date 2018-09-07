@@ -22,8 +22,8 @@ make
 `./exec`
 
 ## Shortcut Keys
-* Quit:                Ctrl+Q  
-*  FullScreen<->Normal: F
+* Quit:[Ctrl+Q]
+* FullScreen<->Normal:[F]
 
 
 
