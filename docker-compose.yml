@@ -1,0 +1,32 @@
+# to build
+# $ docker-compose build
+# to run
+# $ docker-compose up
+# to clean
+# $ docker-compose rm
+version: '2'
+services:
+
+  broker:
+    build: ./broker/
+    container_name: broker
+    command:
+      - mosquitto
+
+  console:
+    build: .
+    container_name: console
+    # for x11
+    environment:
+      - "DISPLAY=docker.for.mac.localhost:0"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    depends_on:
+      - "broker"
+
+  publisher:
+    build: ./broker/
+    container_name: publisher
+    depends_on:
+      - "console"
+    command: /bin/bash -c "while :; do mosquitto_pub -h broker -d -t topic/test -m 'hello world'; echo 'published topic'; sleep 1; done"

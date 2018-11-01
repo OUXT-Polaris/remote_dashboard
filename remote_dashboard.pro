@@ -6,6 +6,8 @@ QT+=widgets svg xml
 TEMPLATE = app
 TARGET = exec
 INCLUDEPATH += .
+CONFIG += c++11
+LIBS += -lmosquitto
 
 # Input
 HEADERS += dashboard_panel.hpp dashboard_panel_define.h
