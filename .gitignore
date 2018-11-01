@@ -1,0 +1,15 @@
+# qmake
+Makefile
+.qmake.stash
+
+# binary
+exec
+exec.app/
+
+# build
+*.o
+
+# ?
+moc_dashboard_panel.cpp
+moc_predefs.h
+
