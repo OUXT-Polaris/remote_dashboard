@@ -2,14 +2,14 @@
 Makefile
 .qmake.stash
 
-# binary
+# binary files
 exec
 exec.app/
 
-# build
+# built files
 *.o
 
-# ?
+# mocs
 moc_dashboard_panel.cpp
 moc_predefs.h
 
